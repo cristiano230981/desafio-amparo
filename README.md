@@ -1,4 +1,18 @@
 ﻿# desafio-amparo
+## Sobre o Desafio
+Em primeiro lugar, este desafio foi diferente pra mim pois tive a oportunidade de aprender um pouco sobre VUEjs, algo que até então, só tinha ouvido falar, então optei por utilizar já sabendo que a Ampado utiliza.
+
+Aprendi um pouco e já consigo identificar muitas melhorias neste código como por ex.: components Vue para reaproveitar e melhorar a leitura e manutenção do código (ainda tenho muito o que aprender).
+
+A Api utilizei TypeScript, TypeORM (migration), Nestjs.
+
+TypeScript por ser tipado e facilitar a OOP, Nestjs para desenvolver algo mais escalável e typeORM para o Migration (ajuda a manter as entidades, relacionamentos, etc.)
+
+Pessoalmente falando o TypeORM parece bacana mas acabei travando com um relacionamento onde a entidade relacionada não carregou a entidade como deveria.
+
+Por fim, só poderia agradecer a oportunidade de fazer este desafio, com certeza da para melhorar e muito este código!
+
+
 ## Installation
 
 ### Client
