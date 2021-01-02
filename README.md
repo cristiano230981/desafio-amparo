@@ -4,11 +4,13 @@ Em primeiro lugar, este desafio foi diferente pra mim pois tive a oportunidade d
 
 Aprendi um pouco e já consigo identificar muitas melhorias neste código como por ex.: components Vue para reaproveitar e melhorar a leitura e manutenção do código (ainda tenho muito o que aprender).
 
-A Api utilizei TypeScript, TypeORM (migration), Nestjs, Swagger (documentação).
+A Api utilizei TypeScript, TypeORM (migration), Nestjs, Swagger (documentação), Token JWT.
 
 <img src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg" alt="Swagger Logo" width="174" height="50"><img src="https://d33wubrfki0l68.cloudfront.net/e937e774cbbe23635999615ad5d7732decad182a/26072/logo-small.ede75a6b.svg" alt="NestJS - A progressive Node.js framework"  height="50"><img src="https://github.com/typeorm/typeorm/raw/master/resources/logo_big.png" height="50">
 
-TypeScript por ser tipado e facilitar a OOP, Nestjs para desenvolver algo mais escalável e typeORM para o Migration (ajuda a manter as entidades, relacionamentos, etc.) e Swagger para documentação.
+TypeScript por ser tipado e facilitar a OOP, Nestjs para desenvolver algo mais escalável e typeORM para o Migration (ajuda a manter as entidades, relacionamentos, etc.) e Swagger para documentação, JsonToken JWT para segurança da API e Postgres para banco de dados com docker.
+
+Tentei deixar o mais otimizado possível apra facilitar a avaliação.
 
 Pessoalmente falando o TypeORM parece bacana mas acabei travando com um relacionamento onde a entidade relacionada não carregou a entidade como deveria, talvez com mais tempo resolveria isso.
 
