@@ -1,4 +1,4 @@
-import { Entity, Column, ManyToMany, JoinTable, OneToMany, JoinColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, OneToMany, JoinColumn } from 'typeorm';
 import { AtividadeEntity } from './atividade.entity';
 import { BaseEntity } from './base.entity';
 
@@ -12,7 +12,7 @@ export class ClienteEntity extends BaseEntity {
     cpf: string;
 
 
-    @OneToMany(type => AtividadeEntity, AtividadeEntity => AtividadeEntity.cliente, { eager: true })
+    @OneToMany(() => AtividadeEntity, AtividadeEntity => AtividadeEntity.cliente, { eager: true })
     @JoinColumn()
     atividades: AtividadeEntity[];
 }

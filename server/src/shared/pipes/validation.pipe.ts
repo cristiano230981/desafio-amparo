@@ -8,7 +8,7 @@ export class ValidationPipe implements PipeTransform<any> {
   async transform(value, metadata: ArgumentMetadata) {
 
     if (!value) {
-      throw new BadRequestException('No data submitted');
+      throw new BadRequestException('Nenhum dado enviado');
     }
 
     const { metatype } = metadata;
@@ -18,7 +18,7 @@ export class ValidationPipe implements PipeTransform<any> {
     const object = plainToClass(metatype, value);
     const errors = await validate(object);
     if (errors.length > 0) {
-      throw new HttpException({message: 'Input data validation failed', errors:  this.buildError(errors)}, HttpStatus.BAD_REQUEST);
+      throw new HttpException({message: 'A validação de dados falhou', errors:  this.buildError(errors)}, HttpStatus.BAD_REQUEST);
     }
     return value;
   }

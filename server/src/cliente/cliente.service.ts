@@ -13,12 +13,7 @@ export class ClienteService {
     constructor(@InjectRepository(ClienteEntity) private readonly repo: Repository<ClienteEntity>,
                 @InjectRepository(AtividadeEntity) private readonly repoAtividade: Repository<AtividadeEntity> ){ }
 
-    public async findAll(query): Promise<ClienteRO> {
-    
-        // const qb = await getRepository(ClienteEntity)
-        //     .createQueryBuilder('c')
-        //     .leftJoinAndSelect('atividade', 'a', 'a.clienteId=c.Id');
-        
+    public async findAll(query): Promise<ClienteRO> {       
         const qb = await getRepository(ClienteEntity)
             .createQueryBuilder('c')
             .leftJoinAndSelect('atividade', 'a', 'a.clienteId=c.Id');
@@ -28,8 +23,6 @@ export class ClienteService {
 
         if ('nome' in query) {
             qb.andWhere("lower(c.nome) LIKE lower(:nome)", { nome: `%${query.nome}%` });
-            //delete query.limit;
-            //delete query.offset;
         }
         
         if ('limit' in query) {
@@ -39,9 +32,6 @@ export class ClienteService {
         if ('offset' in query) {
             qb.offset(query.offset);
         }
-
-        // const results2 = await qb.getMany().then(items => items.map(e => e.atividades));
-        // console.log(results2);
 
         const resultCount = await qb.getCount();
         const results = await qb.getMany()

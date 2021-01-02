@@ -16,24 +16,11 @@ export class AtividadeService {
 
     public async findAll(query): Promise<AtividadesRO> {
 
-        // const qb = await getRepository(ClienteEntity)
-        //     .createQueryBuilder('c')
-        //     .leftJoinAndSelect('atividade', 'a', 'a.clienteId=c.Id');
-
         const qb = await getRepository(AtividadeEntity)
             .createQueryBuilder('a')
             .innerJoinAndSelect('cliente', 'c', 'a."clienteId"=c.Id');
 
         qb.where("1 = 1");
-        // qb.orderBy('a.vencimento', 'DESC');
-
-        // if ('limit' in query) {
-        //     qb.limit(query.limit);
-        // }
-
-        // if ('offset' in query) {
-        //     qb.offset(query.offset);
-        // }
 
         if ('limit' in query) {
             qb.limit(query.limit);
@@ -43,68 +30,18 @@ export class AtividadeService {
             qb.offset(query.offset);
         }
 
-        //console.log(qb);
-
-         //const results2 = await qb.getMany().then(items => items.map(e => ClienteDTO.fromEntity(e.cliente)));
-         //console.log(results2);
-
-        // const results3 = await qb.getMany().then(items => items.map(e => AtividadeDTO.fromEntity(e)));
-        // console.log(results3);
-
         const resultCount = await qb.getCount();
         const results = await qb.getMany()
             .then(items => items.map(e => AtividadeDTO.fromEntity(e)));
         
-        
-        // results.map(function (e) { 
-        //     const cliente = this.repo.findOne({ where: { id: e.clienteId } })
-        //         .then(item => ClienteDTO.fromEntity(item));
-            
-        //     cliente.then(function (c) {
-        //         return e.cliente = c;
-        //     });
-            
-        // });
-
+        //isso não deveria ficar assim, o innerJoinAndSelect evitaria isso mas deu ruim! (vou refatorar isso)
         for (var i = 0; i < results.length; i++) {
             const cliente = await this.repo.findOne({ where: { id: results[i].clienteId } })
                 .then(item => ClienteDTO.fromEntity(item));
             
-            results[i].cliente = cliente; // Add "total": 2 to all objects in array
+            results[i].cliente = cliente; 
         }
 
-        // const teste= results.map(async (obj) => {
-        //     const cliente = await this.repo.findOne({ where: { id: obj.clienteId } })
-        //         .then(item => ClienteDTO.fromEntity(item));
-
-        //     console.log(cliente);
-            
-        //     //cliente.then(function (c) {
-        //         obj.cliente = cliente;
-        //     //});
-
-
-        //     //obj.total = 2;
-        //     // or via brackets
-        //     // obj['total'] = 2;
-        //     return obj;
-        // })
-
-        // results.forEach(element => {
-        //     const cliente = this.repo.findOne({ where: { id: element.clienteId } })
-        //         .then(item => ClienteDTO.fromEntity(item));
-            
-        //     cliente.then(function (c) { 
-        //         element.cliente = c;  
-        //         console.log(element.cliente);
-        //     });
-        // });
-        
-        //const author = await this.userRepository.findOne({ where: { id: userId }, relations: ['articles'] });
-        //author.articles.push(article);
-        
-        //console.log(results);
-        
         return { results, resultCount };
 
     }

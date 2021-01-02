@@ -1,5 +1,4 @@
-import { eStatus } from '../shared/enuns';
-import { Entity, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
+import { Entity, Column, ManyToOne } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { ClienteEntity } from './cliente.entity';
 
@@ -12,19 +11,13 @@ export class AtividadeEntity extends BaseEntity {
     @Column({ type: 'timestamptz' })
     vencimento: Date;
 
-    // @Column({
-    //     type: "enum",
-    //     enum: eStatus,
-    //     default: eStatus.Aberto
-    // })
-    // status: eStatus;
     @Column({
         type: "integer",
         default: 0
     })
     status: number;
 
-    @ManyToOne(type => ClienteEntity, ClienteEntity => ClienteEntity.atividades)
+    @ManyToOne(() => ClienteEntity, ClienteEntity => ClienteEntity.atividades)
     cliente: ClienteEntity;
 
     @Column({ type: 'varchar' })
