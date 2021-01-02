@@ -1,10 +1,10 @@
 ﻿# desafio-amparo
 ## Sobre o Desafio
-Em primeiro lugar, este desafio foi diferente pra mim pois tive a oportunidade de aprender um pouco sobre VUEjs, algo que até então, só tinha ouvido falar, então optei por utilizar já sabendo que a Ampado utiliza.
+Em primeiro lugar este desafio foi diferente pra mim pois tive a oportunidade de aprender um pouco sobre VUEjs, algo que até então, só tinha ouvido falar, então optei por utilizar já sabendo que a Amparo utiliza.
 
-Aprendi um pouco e já consigo identificar muitas melhorias neste código como por ex.: components Vue para reaproveitar e melhorar a leitura e manutenção do código (ainda tenho muito o que aprender).
+Aprendi um pouco e já consigo identificar muitas melhorias neste código como por ex.: components Vue para reaproveitar e melhorar a leitura e manutenção do código (ainda tenho muito o que aprender e o céu é o limite!).
 
-A Api utilizei TypeScript, TypeORM (migration), Nestjs, Swagger (documentação), Token JWT.
+Para o Backend utilizei TypeScript, TypeORM (migration), Nestjs, Swagger (documentação), Token JWT.
 
 <img src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg" alt="Swagger Logo" width="174" height="50"><img src="https://d33wubrfki0l68.cloudfront.net/e937e774cbbe23635999615ad5d7732decad182a/26072/logo-small.ede75a6b.svg" alt="NestJS - A progressive Node.js framework"  height="50"><img src="https://github.com/typeorm/typeorm/raw/master/resources/logo_big.png" height="50"><img class="logo" src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL Elephant Logo" height="50">
 
