@@ -32,23 +32,23 @@ $ npm run dev
 
 Veja em: http://localhost:8081
 
-## Running Migration (criar o banco)
+### Server (API REST)
+
 ```bash
+$ cd server
+# instalar os pacotes
+$ npm install
 # subir o docker do banco e criar o banco 
 $ npm run start:dev:db
 # gerar o script migration "opcional" (não é necessário neste pois já existe o arquivo na pasta)
 $ npm run typeorm:migration:generate -- my_init
 # gerar as tabelas no banco
 $ npm run typeorm:migration:run
-```
-
-### Server (API REST)
-
-```bash
-$ cd server
-$ npm install
+# subir o servidor
 $ npm run start:dev
 ```
+
+
 
 Veja em: http://localhost:3000/docs/ 
 
