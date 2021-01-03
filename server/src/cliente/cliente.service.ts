@@ -24,6 +24,10 @@ export class ClienteService {
         if ('nome' in query) {
             qb.andWhere("lower(c.nome) LIKE lower(:nome)", { nome: `%${query.nome}%` });
         }
+
+        if ('cpf' in query) {
+            qb.andWhere("lower(c.cpf) LIKE lower(:cpf)", { cpf: `%${query.cpf}%` });
+        }
         
         if ('limit' in query) {
             qb.limit(query.limit);
