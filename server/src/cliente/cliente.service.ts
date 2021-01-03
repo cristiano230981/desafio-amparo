@@ -13,22 +13,28 @@ export class ClienteService {
     constructor(@InjectRepository(ClienteEntity) private readonly repo: Repository<ClienteEntity>,
                 @InjectRepository(AtividadeEntity) private readonly repoAtividade: Repository<AtividadeEntity> ){ }
 
+    public isNumber(x: any): x is number {
+        //return typeof x === "number";
+        return !isNaN(parseFloat(x)) && !isNaN(x - 0);
+    }
+    
     public async findAll(query): Promise<ClienteRO> {       
         const qb = await getRepository(ClienteEntity)
             .createQueryBuilder('c')
             .leftJoinAndSelect('atividade', 'a', 'a.clienteId=c.Id');
         
         qb.where("1 = 1");
-        qb.orderBy('a.vencimento', 'DESC');
-
-        if ('nome' in query) {
-            qb.andWhere("lower(c.nome) LIKE lower(:nome)", { nome: `%${query.nome}%` });
-        }
-
+        
         if ('cpf' in query) {
-            qb.andWhere("lower(c.cpf) LIKE lower(:cpf)", { cpf: `%${query.cpf}%` });
+            if (this.isNumber(query.cpf)) {
+                qb.andWhere("lower(c.cpf) LIKE lower(:cpf)", { cpf: `%${query.cpf}%` });
+            } else {
+                qb.andWhere("lower(c.nome) LIKE lower(:nome)", { nome: `%${query.nome}%` })
+            }
         }
         
+        qb.orderBy('a.vencimento', 'DESC');
+
         if ('limit' in query) {
             qb.limit(query.limit);
         }

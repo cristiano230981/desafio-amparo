@@ -54,7 +54,7 @@ export default {
                 cpf: ''
             },
             checkin: '',
-            autoCompleteSource: process.env.APIURL +  '/clientes?nome='
+            //autoCompleteSource: 'http://localhost:3000/api/clientes?nome='
         };
     },
     computed: {
@@ -65,6 +65,10 @@ export default {
         },
     },
     methods: {
+        autoCompleteSource(input) {
+            //return 'http://localhost:3000/api/clientes?cpf=' + input; //process.env.API + '/distribution/search?query=' + input
+            return 'http://localhost:3000/api/clientes?nome=' + input + '&cpf=' + input; //process.env.API + '/distribution/search?query=' + input
+        },
         setPaciente(result) {
             this.inputAtividade.paciente = { "id": result.value, "nome": result.selectedObject.nome, "cpf": result.selectedObject.cpf };
         },
