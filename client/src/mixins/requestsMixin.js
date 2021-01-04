@@ -23,7 +23,7 @@ axios.interceptors.response.use(
 export const requestsMixin = {
     methods: {
         URL(){
-            return this.APIURL;
+            return APIURL;
         },
         signUp(data) {
              return axios.post(`${APIURL}/users`, data);
@@ -31,18 +31,6 @@ export const requestsMixin = {
         logIn(data) {
             return axios.post(`${APIURL}/users/login`, data);
         },
-        // changePassword(data) {
-        //     return axios.post(`${APIURL}/users/changePassword`, data);
-        // },
-        // currentUser() {
-        //     return axios.get(`${APIURL}/users/currentUser`);
-        // },
-        // setBitbucketCredentials(data) {
-        //     return axios.post(`${APIURL}/bitbucket/setBitbucketCredentials`, data);
-        // },
-        // repos(page) {
-        //     return axios.get(`${APIURL}/bitbucket/repos/${page || 1}`);
-        // },
         atividadesInsert(data) {
             return axios.post(`${APIURL}/atividades`, data);
         },

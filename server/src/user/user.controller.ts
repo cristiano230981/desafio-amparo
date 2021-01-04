@@ -33,11 +33,6 @@ export class UserController {
     return this.userService.create(userData);
   }
 
-  // @Delete('users/:slug')
-  // async delete(@Param() params) {
-  //   return await this.userService.delete(params.slug);
-  // }
-
   @ApiOperation({ summary: 'Efetuar o login' })
   @UsePipes(new ValidationPipe())
   @Post('users/login')
